@@ -11,35 +11,41 @@
     </div>
 
     <div class="listProductos">
-      <b-table striped hover :items="productos" :fields="fields" sticky-header></b-table>
+      <b-table striped hover :items="productos" :fields="fields" sticky-header @row-clicked="verDetalle"></b-table>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'ListadoComponent',
+  name: "ListadoComponent",
   computed: {
-    ...mapGetters(['getProductos']),
+    ...mapGetters(["getProductos"]),
     productos() {
-      return this.getProductos.map(producto => ({
+      return this.getProductos.map((producto) => ({
+        id: producto.id, // Asegúrate de tener un ID único para cada producto
         nombre: producto.nombre,
-        categoria: producto.categoria
+        categoria: producto.categoria,
       }));
     },
     fields() {
       return [
-        { key: 'nombre', label: 'Nombre' },
-        { key: 'categoria', label: 'Categoría' }
+        { key: "nombre", label: "Nombre" },
+        { key: "categoria", label: "Categoría" },
       ];
-    }
+    },
+  },
+  methods: {
+    verDetalle(item) {
+      this.$router.push({ name: "detalleProducto", params: { id: item.id } });
+    },
   },
   created() {
-    this.$store.dispatch('fetchProductos');
-  }
-}
+    this.$store.dispatch("fetchProductos");
+  },
+};
 </script>
 
 <style scoped>
@@ -47,7 +53,7 @@ export default {
   width: auto;
   height: auto;
   background-color: #f0f0f0;
-  border: 2px solid #007BFF;
+  border: 2px solid #007bff;
   border-radius: 10px;
   padding: 20px;
   margin: 20px;

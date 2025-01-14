@@ -5,6 +5,7 @@ import LoginView from '@/views/LoginView.vue'
 import NotFound from '@/views/NotFoundView.vue'
 import RegistroView from '@/views/RegistroView.vue'
 import ProductosView from '@/views/ProductosView.vue'
+import DetalleProductoView from '@/views/DetalleProductoView.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,12 @@ const routes = [
     path: '/productos',
     name: 'productos',
     component: ProductosView
+  },
+
+  {
+    path: '/productos/:id',
+    name: 'detalleProducto',
+    component: DetalleProductoView
   },
 
   {
