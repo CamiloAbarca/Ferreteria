@@ -6,7 +6,7 @@
       </div>
 
       <div class="btnBack">
-        <b-button type="link" variant="danger" to="/">Regresar al Home</b-button>
+        <b-button type="link" variant="dark" to="/">Regresar al Home</b-button>
       </div>
     </div>
 
@@ -25,7 +25,7 @@ export default {
     ...mapGetters(["getProductos"]),
     productos() {
       return this.getProductos.map((producto) => ({
-        id: producto.id, // Asegúrate de tener un ID único para cada producto
+        id: producto.id,
         nombre: producto.nombre,
         categoria: producto.categoria,
       }));

@@ -2,19 +2,19 @@
   <div class="productos">
     <div class="header">
       <div class="titulo">
-        <h1>Detalle Producto</h1>
+        Detalle Producto
       </div>
 
       <div class="btnBack">
-        <b-button type="link" variant="danger" to="/productos">Regresar al Listado de Producto</b-button>
+        <b-button type="link" variant="dark" to="/productos">Regresar al Listado de Producto</b-button>
       </div>
     </div>
 
     <div class="detalleProducto" v-if="producto">
-      <b-card :title="producto.nombre">
+      <b-card :title="producto.categoria" style="background: #007bff; color: white;">
         <br>
-        <b-card-text>
-          <strong>Categoría:</strong> {{ producto.categoria }}
+        <b-card-text style="font-size: 50px;">
+          {{ producto.nombre }}
         </b-card-text>
         <b-card-text>
           <strong>Descripción:</strong>
@@ -29,9 +29,6 @@
           {{ producto.stock || "No disponible" }} Unidades
         </b-card-text>
       </b-card>
-    </div>
-    <div v-else>
-      <p>Cargando...</p>
     </div>
   </div>
 </template>
@@ -65,6 +62,12 @@ export default {
 
 <style scoped>
 .productos {
+  display: flex;
+  /* Usar flexbox */
+  flex-direction: column;
+  /* Colocar elementos en columna */
+  align-items: center;
+  /* Centrar horizontalmente */
   width: auto;
   height: auto;
   background-color: #f0f0f0;
@@ -83,6 +86,7 @@ export default {
 
 .titulo {
   flex: 1;
+  font-size: 60px;
 }
 
 .btnBack {
@@ -91,5 +95,8 @@ export default {
 
 .detalleProducto {
   margin-top: 20px;
+  width: 800px;
+  /* Puedes ajustar el ancho según sea necesario */
+  text-align: left;
 }
 </style>

@@ -6,6 +6,8 @@ import NotFound from '@/views/NotFoundView.vue'
 import RegistroView from '@/views/RegistroView.vue'
 import ProductosView from '@/views/ProductosView.vue'
 import DetalleProductoView from '@/views/DetalleProductoView.vue'
+import ConfirmacionRegistroView from '@/views/ConfirmacionRegistroView.vue'
+import ProveedoresView from '@/views/ProveedoresView.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,12 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+
+  {
+    path: '/proveedores',
+    name: 'proveedores',
+    component: ProveedoresView
   },
 
   {
@@ -43,6 +51,12 @@ const routes = [
     path: '/registro',
     name: 'registro',
     component: RegistroView
+  },
+
+  {
+    path: '/confirmacion',
+    name: 'confirmacion',
+    component: ConfirmacionRegistroView
   },
 
 

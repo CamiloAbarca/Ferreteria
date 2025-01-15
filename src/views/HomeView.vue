@@ -12,7 +12,6 @@
     <Ofertas></Ofertas>
     <br>
 
-    <h1>Contactos</h1>
     <Contactos></Contactos>
     
   </div>
@@ -21,7 +20,7 @@
 <script>
 import Populares from '@/components/HomeComponents/Populares.vue';
 import Ofertas from '@/components/HomeComponents/Ofertas.vue';
-import Contactos from '@/components/HomeComponents/Contactos.vue';
+import Contactos from '@/components/GeneralComponents/Contactos.vue';
 
 export default {
   name: 'HomeView',

@@ -124,7 +124,7 @@ export default {
 .formulario {
     width: 500px;
     height: auto;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border: 2px solid #007BFF;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);

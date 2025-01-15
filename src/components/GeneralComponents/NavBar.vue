@@ -11,6 +11,7 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-nav-item to="/">Home</b-nav-item>
+                    <b-nav-item to="/proveedores">Proveedores</b-nav-item>
                     <b-nav-item to="/productos">Productos</b-nav-item>
                     <b-nav-item to="/login">Login</b-nav-item>
                     <b-nav-item to="/registro">Registro</b-nav-item>

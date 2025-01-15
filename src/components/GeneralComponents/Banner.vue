@@ -5,14 +5,25 @@
                 alt="">
         </div>
         <div class="titulo">
-            Ferretería El Tornillo Perdido
+            {{ nombre }}
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: 'BannerComponent',
+    computed: {
+        ...mapGetters(["getInformacion"]),
+        nombre() {
+            return this.getInformacion.nombre;
+        }
+    },
+    created() {
+        this.$store.dispatch('fetchInformacion');
+    }
 }
 </script>
 
@@ -23,7 +34,7 @@ export default {
     align-items: center;
     width: auto;
     height: auto;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border: 2px solid #007BFF;
     border-radius: 10px;
     padding: 20px;
