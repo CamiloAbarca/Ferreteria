@@ -1,6 +1,11 @@
 <template>
     <div>
-        <h1>Footer</h1>
+        <div class="container">
+            <footer class="py-3 my-4">
+                <div class="nav justify-content-center border-bottom pb-3 mb-3"></div>
+                <p class="text-center text-body-secondary">Todos Los Derechos Reservados © 2025 Herramientas y Soluciones</p>
+            </footer>
+        </div>
     </div>
 </template>
 
@@ -11,4 +16,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+</style>

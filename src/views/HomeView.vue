@@ -13,7 +13,9 @@
     <br>
 
     <Contactos></Contactos>
-    
+    <br>
+
+    <Footer></Footer>    
   </div>
 </template>
 
@@ -21,13 +23,15 @@
 import Populares from '@/components/HomeComponents/Populares.vue';
 import Ofertas from '@/components/HomeComponents/Ofertas.vue';
 import Contactos from '@/components/GeneralComponents/Contactos.vue';
+import Footer from '@/components/GeneralComponents/Footer.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Populares,
     Ofertas,
-    Contactos
+    Contactos,
+    Footer
   }
 }
 </script>

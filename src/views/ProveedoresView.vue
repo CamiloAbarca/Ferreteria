@@ -5,6 +5,7 @@
     <PromocionesActivas></PromocionesActivas>
     <VerProductos></VerProductos>
     <Contactos></Contactos>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import ListaProveedores from '@/components/ProveedoresComponents/ListaProveedore
 import PromocionesActivas from '@/components/ProveedoresComponents/PromocionesActivas.vue';
 import VerProductos from '@/components/ProveedoresComponents/VerProductos.vue';
 import Contactos from '@/components/GeneralComponents/Contactos.vue';
+import Footer from '@/components/GeneralComponents/Footer.vue';
 
 export default {
     name: 'ProveedoresView',
@@ -22,7 +24,8 @@ export default {
         ListaProveedores,
         VerProductos,
         PromocionesActivas,
-        Contactos
+        Contactos,
+        Footer
     },
 
 }
