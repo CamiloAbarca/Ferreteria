@@ -40,20 +40,19 @@ export default {
     align-items: center;
     width: auto;
     height: auto;
-    background-color: #ffffff;
-    border: 2px solid #007BFF;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
+    background-color: #212529;
+    padding: 5px;
+    color: white;
 }
 
 .info,
 .rrss {
-    font-size: 1vw;
+    font-size: 18px;
     text-align: center;
 }
 
 a{
     margin: 5px;
+    text-decoration: none;
 }
 </style>

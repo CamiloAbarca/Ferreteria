@@ -7,7 +7,7 @@
         </div>
 
         <div class="listProductos">
-            <b-table striped hover :items="proveedores" :fields="fields" sticky-header></b-table>
+            <b-table striped hover :items="informacion" :fields="fields" sticky-header></b-table>
         </div>
     </div>
 </template>
@@ -18,9 +18,9 @@ import { mapGetters } from "vuex";
 export default {
     name: "ListadoProveedoresComponent",
     computed: {
-        ...mapGetters(["getProveedores"]),
-        proveedores() {
-            return this.getProveedores.map((proveedor) => ({
+        ...mapGetters(["getInformacion"]),
+        informacion() {
+            return this.getInformacion.proveedoresActuales.map((proveedor) => ({
                 nombre: proveedor.nombre,
                 contacto: proveedor.contacto,
                 telefono: proveedor.telefono,
@@ -37,7 +37,7 @@ export default {
         },
     },
     created() {
-        this.$store.dispatch('fetchServicios');
+        this.$store.dispatch('fetchInformacion');
     }
 };
 </script>

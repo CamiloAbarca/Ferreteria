@@ -7,28 +7,28 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productos: [],
-    proveedores: [],
-    promociones: [], 
     informacion: [],
+    login: [],
+    respuesta: []
   },
   getters: {
     getProductos: state => state.productos,
-    getProveedores: state => state.proveedores,
-    getPromociones: state => state.promociones,
-    getInformacion: state => state.informacion
+    getInformacion: state => state.informacion,
+    getLogin: state => state.login,
+    getRespuesta: state => state.respuesta
   },
   mutations: {
     SET_PRODUCTOS(state, productos) {
       state.productos = productos;
     },
-    SET_PROVEEDORES(state, proveedores) {
-      state.proveedores = proveedores;
-    },
-    SET_PROMOCIONES(state, promociones) {
-      state.promociones = promociones;
-    },
     SET_INFORMACION(state, informacion) {
       state.informacion = informacion;
+    },
+    SET_LOGIN(state, login) {
+      state.login = login
+    },
+    SET_RESPUESTA(state, respuesta) {
+      state.respuesta = respuesta
     }
   },
   actions: {
@@ -41,23 +41,6 @@ export default new Vuex.Store({
       }
     },
 
-    async fetchServicios({ commit }) {
-      try {
-        const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/home.json');
-        commit('SET_PROVEEDORES', response.data.paginaHome.proveedoresActuales);
-      } catch (error) {
-        console.error(`Error al obtener los servicios: ${error}`);
-      }
-    },
-
-    async fetchPromociones({ commit }) {
-      try {
-        const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/home.json');
-        commit('SET_PROMOCIONES', response.data.paginaHome.promocionesActuales);
-      } catch (error) {
-        console.error(`Error al obtener las promociones: ${error}`);
-      }
-    },
     async fetchInformacion({ commit }) {
       try {
         const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/home.json');
@@ -65,6 +48,36 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(`Error al obtener la información: ${error}`);
       }
+    },
+
+    async fetchLogin({ commit }) {
+      try {
+        const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/login.json');
+        commit('SET_LOGIN', response.data.login);
+      } catch (error) {
+        console.error(`Error login: ${error}`);
+      }
+    },
+
+    async fetchRespuesta({ commit }) {
+      try {
+        const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/registroresp.json');
+        commit('SET_RESPUESTA', response.data.respuestaRegistro);
+      } catch (error) {
+        console.error(`Error registro: ${error}`);
+      }
+    },
+
+    async fetchRegistroUsuario(usuario) {
+      const respuesta = {
+        registroUsuario: {
+          nombre: usuario.nombre,
+          email: usuario.email,
+          password: usuario.password,
+          telefono: usuario.telefono
+        }
+      };
+      localStorage.setItem('usuarioRegistrado', JSON.stringify(respuesta.registroUsuario));
     }
   },
   modules: {

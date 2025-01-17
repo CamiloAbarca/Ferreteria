@@ -13,6 +13,7 @@
                     <b-nav-item to="/">Home</b-nav-item>
                     <b-nav-item to="/proveedores">Proveedores</b-nav-item>
                     <b-nav-item to="/productos">Productos</b-nav-item>
+                    <div><h4>|</h4></div>
                     <b-nav-item to="/login">Login</b-nav-item>
                     <b-nav-item to="/registro">Registro</b-nav-item>
                 </b-navbar-nav>

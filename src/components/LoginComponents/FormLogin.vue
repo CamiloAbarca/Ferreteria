@@ -24,10 +24,16 @@
         <div>
             <router-link to="/registro">Registrarse</router-link>
         </div>
+
+        <div v-if="loginMessage" class="alert alert-success mt-3">
+            {{ loginMessage }}
+        </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
     name: 'FormLoginComponent',
     data() {
@@ -36,9 +42,21 @@ export default {
             password: '',
             emailState: null,
             passwordState: null,
+            loginMessage: '', // Mensaje de éxito
+            loginData: {} // Para almacenar los datos de login
         };
     },
+    computed: {
+        ...mapGetters(["getLogin"]),
+    },
+    created() {
+        this.fetchLoginData();
+    },
     methods: {
+        async fetchLoginData() {
+            await this.$store.dispatch('fetchLogin');
+            this.loginData = this.getLogin; // Almacena los datos de login
+        },
         validateEmail() {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             this.emailState = emailPattern.test(this.email) ? true : false;
@@ -48,8 +66,14 @@ export default {
             this.passwordState = this.password ? true : false;
 
             if (this.emailState && this.passwordState) {
-                // Aquí puedes manejar el inicio de sesión
                 console.log('Iniciando sesión con:', this.email, this.password);
+
+                // Comparar las credenciales
+                if (this.email === this.loginData.correoElectronico && this.password === this.loginData.contrasena) {
+                    this.loginMessage = "Login exitoso"; // Mensaje de éxito
+                } else {
+                    this.loginMessage = "Credenciales incorrectas"; // Mensaje de error
+                }
             } else {
                 if (!this.email) {
                     this.emailState = false;

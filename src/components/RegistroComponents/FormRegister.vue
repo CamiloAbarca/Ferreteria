@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
     name: 'FormRegisterComponent',
     data() {
@@ -60,6 +62,7 @@ export default {
         };
     },
     methods: {
+        ...mapActions(['fetchRespuesta']),
         validateEmail() {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             this.emailState = emailPattern.test(this.email) ? true : false;
@@ -71,7 +74,7 @@ export default {
         validateRePassword() {
             this.rePassState = this.password === this.rePassword ? true : false;
         },
-        handleRegister() {
+        async handleRegister() {
             this.nameState = this.name ? true : false;
             this.emailState = this.email ? this.emailState : false;
             this.phoneState = this.phone ? this.phoneState : false;
@@ -85,6 +88,15 @@ export default {
                     phone: this.phone,
                     password: this.password,
                 });
+                
+                await this.$store.dispatch('fetchRegistroUsuario', {
+                    nombre: this.name,
+                    email: this.email,
+                    telefono: this.phone,
+                    password: this.password,
+                });
+                await this.$store.dispatch('fetchRespuesta');
+                this.$router.push({ path: '/confirmacion' });
                 this.resetForm();
             } else {
                 if (!this.name) {

@@ -3,9 +3,12 @@
     <Banner></Banner>
     <ListaProveedores></ListaProveedores>
     <PromocionesActivas></PromocionesActivas>
+    <br>
+    <br>
+    
     <VerProductos></VerProductos>
-    <Contactos></Contactos>
-    <Footer></Footer>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -14,8 +17,6 @@ import Banner from '@/components/GeneralComponents/Banner.vue';
 import ListaProveedores from '@/components/ProveedoresComponents/ListaProveedores.vue';
 import PromocionesActivas from '@/components/ProveedoresComponents/PromocionesActivas.vue';
 import VerProductos from '@/components/ProveedoresComponents/VerProductos.vue';
-import Contactos from '@/components/GeneralComponents/Contactos.vue';
-import Footer from '@/components/GeneralComponents/Footer.vue';
 
 export default {
     name: 'ProveedoresView',
@@ -23,9 +24,7 @@ export default {
         Banner,
         ListaProveedores,
         VerProductos,
-        PromocionesActivas,
-        Contactos,
-        Footer
+        PromocionesActivas
     },
 
 }

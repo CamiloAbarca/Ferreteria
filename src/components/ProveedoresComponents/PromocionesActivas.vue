@@ -2,8 +2,8 @@
     <div class="promosActivas">
         <h1>Promociones Activas</h1>
         <div class="promociones">
-            <b-card v-for="(promocion, index) in promociones" :key="index" :header="'Promoción ' + (index + 1)"
-                class="mb-3">
+            <b-card v-for="(promocion, index) in informaciones.promocionesActuales" :key="index"
+                :header="'Promoción ' + (index + 1)" class="mb-3">
                 <b-card-text>
                     {{ promocion.descripcion }}
                 </b-card-text>
@@ -21,13 +21,13 @@ import { mapGetters } from "vuex";
 export default {
     name: 'PromocionesActivasComponent',
     computed: {
-        ...mapGetters(["getPromociones"]),
-        promociones() {
-            return this.getPromociones;
+        ...mapGetters(["getInformacion"]),
+        informaciones() {
+            return this.getInformacion;
         }
     },
     created() {
-        this.$store.dispatch('fetchPromociones');
+        this.$store.dispatch('fetchInformacion');
     }
 }
 </script>

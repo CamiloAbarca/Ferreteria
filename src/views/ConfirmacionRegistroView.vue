@@ -8,6 +8,7 @@
         </div>
 
         <ConfirmacionRegistro></ConfirmacionRegistro>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
 </template>

@@ -9,29 +9,20 @@
     <br>
 
     <h1>Ofertas</h1>
-    <Ofertas></Ofertas>
+    <PromocionesActivas></PromocionesActivas>
     <br>
-
-    <Contactos></Contactos>
-    <br>
-
-    <Footer></Footer>    
   </div>
 </template>
 
 <script>
 import Populares from '@/components/HomeComponents/Populares.vue';
-import Ofertas from '@/components/HomeComponents/Ofertas.vue';
-import Contactos from '@/components/GeneralComponents/Contactos.vue';
-import Footer from '@/components/GeneralComponents/Footer.vue';
+import PromocionesActivas from '@/components/ProveedoresComponents/PromocionesActivas.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Populares,
-    Ofertas,
-    Contactos,
-    Footer
+    PromocionesActivas
   }
 }
 </script>

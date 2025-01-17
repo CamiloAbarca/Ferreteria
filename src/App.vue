@@ -2,19 +2,19 @@
   <div id="app">
     <NavBar></NavBar>
     <router-view/>
-    <!--<Footer></Footer>-->
+    <Contactos></Contactos>
   </div>
 </template>
 
 <script>
+import Contactos from './components/GeneralComponents/Contactos.vue';
 import NavBar from './components/GeneralComponents/NavBar.vue';
-//import Footer from './components/GeneralComponents/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    //Footer
+    Contactos
   }
 }
 </script>

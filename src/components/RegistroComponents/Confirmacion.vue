@@ -1,6 +1,6 @@
 <template>
   <b-card class="cardConfirmacion" header="CONFIRMACIÓN" header-tag="header" title="Felicidades!">
-    <b-card-text>Mensaje respuesta</b-card-text>
+    <b-card-text>{{ mensaje }}</b-card-text>
     <div class="btnBack">
       <b-button type="link" variant="dark" to="/login">Regresar al Login</b-button>
     </div>
@@ -8,8 +8,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: 'ConfirmacionRegistroComponent',
+  computed: {
+    ...mapGetters(["getRespuesta"]),
+    mensaje() {
+      return this.getRespuesta.mensaje || "No se recibió mensaje de confirmación.";
+    }
+  }
 }
 </script>
 
