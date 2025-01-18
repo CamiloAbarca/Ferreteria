@@ -8,6 +8,8 @@ import ProductosView from '@/views/ProductosView.vue'
 import DetalleProductoView from '@/views/DetalleProductoView.vue'
 import ConfirmacionRegistroView from '@/views/ConfirmacionRegistroView.vue'
 import ProveedoresView from '@/views/ProveedoresView.vue'
+import RegistroProveedoresView from '@/views/RegistroProveedoresView.vue'
+import ConfirmacionRegistroProveedoresView from '@/views/ConfirmacionProveedoresView.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,18 @@ const routes = [
     path: '/proveedores',
     name: 'proveedores',
     component: ProveedoresView
+  },
+
+  {
+    path: '/registroProveedores',
+    name: 'registroProveedores',
+    component: RegistroProveedoresView
+  },
+
+  {
+    path: '/confirmacionProveedor',
+    name: 'confirmacionProveedor',
+    component: ConfirmacionRegistroProveedoresView
   },
 
   {

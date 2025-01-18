@@ -7,14 +7,13 @@
     <h1>Productos Populares</h1>
     <Populares></Populares>
     <br>
-
-    <h1>Ofertas</h1>
     <PromocionesActivas></PromocionesActivas>
     <br>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Populares from '@/components/HomeComponents/Populares.vue';
 import PromocionesActivas from '@/components/ProveedoresComponents/PromocionesActivas.vue';
 
@@ -23,6 +22,12 @@ export default {
   components: {
     Populares,
     PromocionesActivas
+  },
+  methods: {
+    ...mapActions(['fetchProductos']),
+  },
+  async created() {
+    await this.fetchProductos();
   }
 }
 </script>

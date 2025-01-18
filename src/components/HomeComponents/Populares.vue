@@ -1,52 +1,44 @@
 <template>
     <div class="populares">
-        <div>
-            <b-card title="Card Title" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                tag="article" style="max-width: 20rem;" class="mb-2">
+        <div v-for="(producto, index) in productosAleatorios" :key="index">
+            <b-card :title="producto.nombre" img-top tag="article" style="max-width: 20rem;" class="mb-2">
                 <b-card-text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    {{ producto.descripcion }} - Precio: ${{ producto.precio }}
                 </b-card-text>
-
-                <b-button href="#" variant="primary">Go somewhere</b-button>
-            </b-card>
-        </div>
-
-        <div>
-            <b-card title="Card Title" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                tag="article" style="max-width: 20rem;" class="mb-2">
-                <b-card-text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </b-card-text>
-
-                <b-button href="#" variant="primary">Go somewhere</b-button>
-            </b-card>
-        </div>
-
-        <div>
-            <b-card title="Card Title" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
-                tag="article" style="max-width: 20rem;" class="mb-2">
-                <b-card-text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                </b-card-text>
-
-                <b-button href="#" variant="primary">Go somewhere</b-button>
+                <b-button to="/" variant="primary">Ver más</b-button>
             </b-card>
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'PopularesComponent',
-
+    computed: {
+        ...mapGetters(['getProductos']),
+        productosAleatorios() {
+            const productos = this.getProductos;
+            if (productos.length > 0) {
+                const shuffled = productos.sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, 3);
+            }
+            return [];
+        }
+    }
 }
 </script>
 
 <style scoped>
 .populares {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
 }
 </style>

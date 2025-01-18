@@ -1,5 +1,5 @@
 <template>
-    <div class="banner">
+    <div class="banner" v-if="informaciones && informaciones.informacionGeneral">
         <div class="rrss">
             <h4>Redes Sociales</h4>
             <a :href="informaciones.informacionGeneral.redesSociales.facebook"><b-icon icon="facebook"></b-icon></a>
@@ -10,49 +10,52 @@
             <h4>Contacto</h4>
             <p><strong>Dirección: </strong>{{ informaciones.informacionGeneral.direccion }}</p>
             <p><strong>Teléfono: </strong>{{ informaciones.informacionGeneral.telefono }}</p>
-            <p><strong>Correo Electrónico: </strong><a :href="'mailto:' + informaciones.informacionGeneral.correoElectronico">{{
-                informaciones.informacionGeneral.correoElectronico }}</a></p>
-        </div>
-    </div>
-</template>
+            <p><strong>Correo Electrónico: </strong>
+                   <a :href="'mailto:' + informaciones.informacionGeneral.correoElectronico">
+                       {{ informaciones.informacionGeneral.correoElectronico }}
+                   </a>
+               </p>
+           </div>
+       </div>
+   </template>
 
-<script>
-import { mapGetters } from "vuex";
+   <script>
+   import { mapGetters } from "vuex";
 
-export default {
-    name: 'ContactosComponent',
-    computed: {
-        ...mapGetters(["getInformacion"]),
-        informaciones() {
-            return this.getInformacion;
-        }
-    },
-    created() {
-        this.$store.dispatch('fetchInformacion');
-    }
-}
-</script>
+   export default {
+       name: 'ContactosComponent',
+       computed: {
+           ...mapGetters(["getInformacion"]),
+           informaciones() {
+               return this.getInformacion; // Ahora esto es un objeto
+           }
+       },
+       created() {
+           this.$store.dispatch('fetchInformacion'); // Carga la información al crear el componente
+       }
+   }
+   </script>
 
-<style scoped>
-.banner {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: auto;
-    height: auto;
-    background-color: #212529;
-    padding: 5px;
-    color: white;
-}
+   <style scoped>
+   .banner {
+       display: flex;
+       justify-content: space-evenly;
+       align-items: center;
+       width: auto;
+       height: auto;
+       background-color: #212529;
+       padding: 5px;
+       color: white;
+   }
 
-.info,
-.rrss {
-    font-size: 18px;
-    text-align: center;
-}
+   .info,
+   .rrss {
+       font-size: 18px;
+       text-align: center;
+   }
 
-a{
-    margin: 5px;
-    text-decoration: none;
-}
-</style>
+   a {
+       margin: 5px;
+       text-decoration: none;
+   }
+   </style>

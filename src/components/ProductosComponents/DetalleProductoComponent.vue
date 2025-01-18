@@ -63,11 +63,8 @@ export default {
 <style scoped>
 .productos {
   display: flex;
-  /* Usar flexbox */
   flex-direction: column;
-  /* Colocar elementos en columna */
   align-items: center;
-  /* Centrar horizontalmente */
   width: auto;
   height: auto;
   background-color: #f0f0f0;
@@ -96,7 +93,6 @@ export default {
 .detalleProducto {
   margin-top: 20px;
   width: 800px;
-  /* Puedes ajustar el ancho según sea necesario */
   text-align: left;
 }
 </style>

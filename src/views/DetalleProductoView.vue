@@ -2,6 +2,7 @@
   <div>
     <Banner></Banner>
     <DetalleProductoComponent></DetalleProductoComponent>
+    <br><br><br><br><br>
   </div>
 </template>
 

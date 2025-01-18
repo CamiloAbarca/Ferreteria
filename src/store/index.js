@@ -7,8 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productos: [],
-    informacion: [],
-    login: [],
+    informacion: {}, // Cambiado a objeto
+    login: false,
     respuesta: []
   },
   getters: {
@@ -22,10 +22,13 @@ export default new Vuex.Store({
       state.productos = productos;
     },
     SET_INFORMACION(state, informacion) {
-      state.informacion = informacion;
+      state.informacion = informacion; // Almacena el objeto directamente
     },
     SET_LOGIN(state, login) {
-      state.login = login
+      state.login = login; // Almacena el objeto de login
+    },
+    LOGOUT(state) {
+      state.login = false; // Restablece el estado de login
     },
     SET_RESPUESTA(state, respuesta) {
       state.respuesta = respuesta
@@ -44,7 +47,7 @@ export default new Vuex.Store({
     async fetchInformacion({ commit }) {
       try {
         const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/home.json');
-        commit('SET_INFORMACION', response.data.paginaHome);
+        commit('SET_INFORMACION', response.data.paginaHome); // Almacena paginaHome
       } catch (error) {
         console.error(`Error al obtener la información: ${error}`);
       }
@@ -78,6 +81,10 @@ export default new Vuex.Store({
         }
       };
       localStorage.setItem('usuarioRegistrado', JSON.stringify(respuesta.registroUsuario));
+    },
+
+    logout({ commit }) {
+      commit('LOGOUT'); // Llama a la mutación para cerrar sesión
     }
   },
   modules: {

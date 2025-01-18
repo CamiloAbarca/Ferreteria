@@ -1,6 +1,8 @@
 <template>
   <div>
     <img src="https://www.hostingplus.cl/wp-content/uploads/2020/12/error404quees.jpg" alt="notFound">
+    <br>
+    <br>
   </div>
 </template>
 

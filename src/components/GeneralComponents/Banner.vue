@@ -5,25 +5,16 @@
                 alt="">
         </div>
         <div class="titulo">
-            {{ nombre }}
+            "Ferretería El Tornillo Perdido"
+            <p>Ya lo encontramos, ahora encuentra lo que buscas...</p>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 
 export default {
     name: 'BannerComponent',
-    computed: {
-        ...mapGetters(["getInformacion"]),
-        nombre() {
-            return this.getInformacion.nombre;
-        }
-    },
-    created() {
-        this.$store.dispatch('fetchInformacion');
-    }
 }
 </script>
 
@@ -52,5 +43,10 @@ img {
     max-width: 150px;
     object-fit: contain;
     border-radius: 100px;
+}
+
+p{
+    font-size: 1.5vw;
+    color: #007BFF;
 }
 </style>
