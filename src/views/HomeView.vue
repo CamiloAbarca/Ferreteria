@@ -32,8 +32,20 @@ export default {
 }
 </script>
 
-<style scoped>
-img {
-  width: 100%;
+<style lang="scss" scoped>
+$hero-img-width: 100%;
+
+.home {
+  .hero {
+    img {
+      width: $hero-img-width;
+      height: auto;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
 }
 </style>

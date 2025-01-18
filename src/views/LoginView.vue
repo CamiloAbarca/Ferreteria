@@ -22,6 +22,7 @@
 
 <script>
 import Form from '@/components/LoginComponents/FormLogin.vue';
+
 export default {
   name: 'LoginView',
   components: {
@@ -30,11 +31,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$logo-width: 200px;
+$logo-height: 200px;
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .content {
@@ -42,8 +47,8 @@ export default {
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: $logo-width;
+  height: $logo-height;
   object-fit: contain;
 }
 </style>

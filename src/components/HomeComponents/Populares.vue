@@ -5,7 +5,7 @@
                 <b-card-text>
                     {{ producto.descripcion }} - Precio: ${{ producto.precio }}
                 </b-card-text>
-                <b-button to="/" variant="primary">Ver más</b-button>
+                <b-button :to="`/productos/${producto.id}`" variant="primary">Ver más</b-button>
             </b-card>
         </div>
     </div>

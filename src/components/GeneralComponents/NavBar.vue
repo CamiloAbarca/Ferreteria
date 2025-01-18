@@ -4,7 +4,7 @@
             <img class="imgLogo"
                 src="https://static.vecteezy.com/system/resources/previews/007/819/815/non_2x/letter-d-p-with-bolt-screw-hammer-logo-icon-vector.jpg"
                 alt="logo">
-            <b-navbar-brand href="#">El Tornillo Perdido</b-navbar-brand>
+            <b-navbar-brand to="/">El Tornillo Perdido</b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>

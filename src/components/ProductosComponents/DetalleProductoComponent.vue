@@ -49,7 +49,7 @@ export default {
   created() {
     this.$store.dispatch("fetchProductos").then(() => {
       const id = this.$route.params.id;
-      this.producto = this.getProductos.find((producto) => producto.id === id);
+      this.producto = this.getProductos.find((producto) => producto.id === Number(id));
 
       if (!this.producto) {
         this.$router.push({ name: "listadoProductos" });

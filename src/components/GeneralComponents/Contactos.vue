@@ -27,11 +27,11 @@
        computed: {
            ...mapGetters(["getInformacion"]),
            informaciones() {
-               return this.getInformacion; // Ahora esto es un objeto
+               return this.getInformacion;
            }
        },
        created() {
-           this.$store.dispatch('fetchInformacion'); // Carga la información al crear el componente
+           this.$store.dispatch('fetchInformacion');
        }
    }
    </script>

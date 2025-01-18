@@ -28,24 +28,33 @@ export default {
   components: {
     Form
   }
-
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$logo-width: 200px;
+$logo-height: 200px;
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .content {
   text-align: center;
 }
 
-img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
+.logo {
+  img {
+    width: $logo-width;
+    height: $logo-height;
+    object-fit: contain;
+  }
+}
+
+.btnBack {
+  margin-bottom: 20px;
 }
 </style>

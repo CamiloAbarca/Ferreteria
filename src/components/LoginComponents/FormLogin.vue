@@ -57,7 +57,7 @@ export default {
     methods: {
         async fetchLoginData() {
             await this.$store.dispatch('fetchLogin');
-            this.loginData = this.getLogin; // Almacena los datos de login
+            this.loginData = this.getLogin;
         },
         validateEmail() {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,19 +69,17 @@ export default {
 
             if (this.emailState && this.passwordState) {
 
-                // Comparar las credenciales
                 if (this.email === this.loginData.correoElectronico && this.password === this.loginData.contrasena) {
                     this.loginMessage = "Login exitoso! Será redirigido al Home";
-                    this.isSuccess = true; // Mensaje de éxito
+                    this.isSuccess = true;
                     this.$store.commit('SET_LOGIN', { correoElectronico: this.email });
 
-                    // Redirigir al home después de 2 segundos
                     setTimeout(() => {
-                        this.$router.push('/'); // Asegúrate de que la ruta '/' sea la de tu home
+                        this.$router.push('/');
                     }, 2000);
                 } else {
                     this.loginMessage = "Credenciales incorrectas";
-                    this.isSuccess = false; // Mensaje de error
+                    this.isSuccess = false;
                 }
             } else {
                 if (!this.email) {
