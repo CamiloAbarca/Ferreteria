@@ -54,53 +54,38 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['fetchRespuesta']),
+        ...mapActions(['fetchRegistroProveedor']),
         validateEmail() {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            this.emailState = emailPattern.test(this.email) ? true : false;
+            this.emailState = emailPattern.test(this.email);
+            return this.emailState;
         },
         validatePhone() {
             const phonePattern = /^\d{9}$/;
-            this.phoneState = phonePattern.test(this.phone) ? true : false;
+            this.phoneState = phonePattern.test(this.phone);
+            return this.phoneState;
         },
         async handleRegister() {
-            this.nameState = this.name ? true : false;
-            this.emailState = this.email ? this.emailState : false;
-            this.phoneState = this.phone ? this.phoneState : false;
-            this.direccionState = this.direccion ? true : false;
+            this.nameState = !!this.name;
+            this.emailState = this.validateEmail();
+            this.phoneState = this.validatePhone();
+            this.direccionState = !!this.direccion;
 
+            
             if (this.nameState && this.emailState && this.phoneState && this.direccionState) {
-                console.log('Registrando proveedor:', {
-                    name: this.name,
-                    email: this.email,
-                    phone: this.phone,
-                    direccion: this.direccion,
-                });
-
-                // Llama a la nueva acción para registrar el proveedor
-                await this.$store.dispatch('fetchRegistroProveedor', {
+                const nuevoProveedor = {
                     nombre: this.name,
-                    email: this.email,
+                    contacto: this.email,
                     telefono: this.phone,
                     direccion: this.direccion,
-                });
+                };
+
+                await this.fetchRegistroProveedor(nuevoProveedor);
 
                 this.$router.push({ path: '/confirmacionProveedor' });
                 this.resetForm();
             } else {
-                // Manejo de errores
-                if (!this.name) {
-                    this.nameState = false;
-                }
-                if (!this.email) {
-                    this.emailState = false;
-                }
-                if (!this.phone) {
-                    this.phoneState = false;
-                }
-                if (!this.direccion) {
-                    this.direccionState = false;
-                }
+                console.error("Por favor, completa todos los campos correctamente.");
             }
         },
         resetForm() {

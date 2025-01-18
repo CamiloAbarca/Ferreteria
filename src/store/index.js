@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     productos: [],
-    informacion: {}, // Cambiado a objeto
+    informacion: {},
     login: false,
     respuesta: []
   },
@@ -22,13 +22,13 @@ export default new Vuex.Store({
       state.productos = productos;
     },
     SET_INFORMACION(state, informacion) {
-      state.informacion = informacion; // Almacena el objeto directamente
+      state.informacion = informacion;
     },
     SET_LOGIN(state, login) {
-      state.login = login; // Almacena el objeto de login
+      state.login = login;
     },
     LOGOUT(state) {
-      state.login = false; // Restablece el estado de login
+      state.login = false;
     },
     SET_RESPUESTA(state, respuesta) {
       state.respuesta = respuesta
@@ -47,10 +47,18 @@ export default new Vuex.Store({
     async fetchInformacion({ commit }) {
       try {
         const response = await axios.get('https://raw.githubusercontent.com/shaka0241/ferreteria_Api/main/home.json');
-        commit('SET_INFORMACION', response.data.paginaHome); // Almacena paginaHome
+        commit('SET_INFORMACION', response.data.paginaHome);
       } catch (error) {
         console.error(`Error al obtener la información: ${error}`);
       }
+    },
+
+    async fetchRegistroProveedor({ commit }, proveedor) {
+      let proveedores = JSON.parse(localStorage.getItem('proveedores')) || [];
+      proveedores.push(proveedor);
+      localStorage.setItem('proveedores', JSON.stringify(proveedores));
+
+      commit('SET_INFORMACION', { proveedoresActuales: proveedores });
     },
 
     async fetchLogin({ commit }) {
@@ -84,7 +92,7 @@ export default new Vuex.Store({
     },
 
     logout({ commit }) {
-      commit('LOGOUT'); // Llama a la mutación para cerrar sesión
+      commit('LOGOUT');
     }
   },
   modules: {

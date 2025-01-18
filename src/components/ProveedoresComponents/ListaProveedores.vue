@@ -20,7 +20,11 @@ export default {
     computed: {
         ...mapGetters(["getInformacion"]),
         informacion() {
-            return this.getInformacion.proveedoresActuales.map((proveedor) => ({
+            const proveedoresApi = this.getInformacion.proveedoresActuales || [];
+
+            const proveedoresLocal = JSON.parse(localStorage.getItem('proveedores')) || [];
+
+            return [...proveedoresApi, ...proveedoresLocal].map((proveedor) => ({
                 nombre: proveedor.nombre,
                 contacto: proveedor.contacto,
                 telefono: proveedor.telefono,
